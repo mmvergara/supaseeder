@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Copy, Loader2, Trash2 } from "lucide-react";
+import { Copy, Loader2, Trash2, GithubIcon } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -32,6 +32,8 @@ import {
   SystemPromptCustomizer,
 } from "./system-prompt-dialog";
 import { ModeToggle } from "./mode-toggle";
+import Link from "next/link";
+import { useTheme } from "next-themes";
 
 type LocalStorageData = {
   supabaseUrl: string;
@@ -48,6 +50,8 @@ const MODELS = [
 ];
 
 export function SeedQueryGenerator() {
+  const { theme } = useTheme();
+  console.log(theme);
   const [supabaseUrl, setSupabaseUrl] = useState("");
   const [supabaseAnonKey, setSupabaseAnonKey] = useState("");
   const [openaiKey, setOpenaiKey] = useState("");
@@ -377,6 +381,16 @@ ${userPrompt}
               </form>
             </CardContent>
           </Card>
+          <Link
+            href="https://github.com/mmvergara/supaseeder"
+            target="_blank"
+            rel="noreferrer noopener"
+            id="github-repo-link"
+            className="flex justify-center items-center gap-2 p-2 mt-4 rounded-lg hover:underline max-w-[250px] mx-auto font-bold"
+          >
+            <GithubIcon className="h-6 w-6" />
+            Star us on Github 🌟
+          </Link>
         </div>
       </section>
 

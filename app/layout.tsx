@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SupaSeeder",
   description:
-    "Generate seed queries for your Supabase database using the power of AI.",
+    "Generate realistic seed queries for your Supabase database using AI. This tool analyzes your DB schema and generates seed data with SQL or prompts for GPT-based tools like ChatGPT.",
   authors: [
     {
       name: "mmvergara",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SupaSeeder - AI Seed Query Generator for Supabase",
     description:
-      "Generate seed queries for your Supabase database using the power of AI.",
+      "Generate realistic seed queries for your Supabase database using AI. This tool analyzes your DB schema and generates seed data with SQL or prompts for GPT-based tools like ChatGPT.",
     locale: "en_US",
     type: "website",
   },
