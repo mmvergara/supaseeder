@@ -3,6 +3,7 @@
   "author": "mmvergara",
   "description": "A simple seed generator for Supabase.",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
