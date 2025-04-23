@@ -61,7 +61,9 @@ export function SeedQueryGenerator() {
   const [error, setError] = useState("");
   const [saveToLocalStorage, setSaveToLocalStorage] = useState(false);
   const [selectedModel, setSelectedModel] = useState("gpt-4o-mini");
-  const [generationMode, setGenerationMode] = useState("prompt");
+  const [generationMode, setGenerationMode] = useState<"prompt" | "direct">(
+    "prompt"
+  );
   const [fetchingDefinitions, setFetchingDefinitions] = useState(false);
 
   useEffect(() => {
@@ -73,7 +75,9 @@ export function SeedQueryGenerator() {
         setSupabaseAnonKey(parsedData.supabaseAnonKey || "");
         setPrompt(parsedData.prompt || "");
         setSaveToLocalStorage(parsedData.saveToLocalStorage || false);
-        setGenerationMode(parsedData.generationMode || "prompt");
+        setGenerationMode(
+          (parsedData.generationMode as "prompt" | "direct") || "prompt"
+        );
       } catch (e) {
         console.error("Error parsing localStorage data:", e);
       }
@@ -192,6 +196,15 @@ ${userPrompt}
       for await (const chunk of readStreamableValue(streamableValue)) {
         setOutput((prev) => prev + chunk);
       }
+
+      setOutput((prev) => {
+        if (generationMode === "direct" && prev) {
+          if (prev.startsWith("```sql") && prev.endsWith("```")) {
+            return prev.slice(7, -3).trim();
+          }
+        }
+        return prev;
+      });
     } catch (err) {
       console.error("Error in seed query generation:", err);
       setError("Failed to generate seed query. Please try again.");
@@ -284,7 +297,9 @@ ${userPrompt}
 
                 <Tabs
                   value={generationMode}
-                  onValueChange={setGenerationMode}
+                  onValueChange={(v) => {
+                    setGenerationMode(v as "prompt" | "direct");
+                  }}
                   className="w-full"
                 >
                   <TabsList className="grid w-full grid-cols-2 bg-muted/50">
@@ -401,7 +416,7 @@ ${userPrompt}
               {generationMode === "prompt" ? "AI Prompt" : "Generated Query"}
             </h2>
             {isLoading && <Loader2 className="h-8 w-8 animate-spin" />}
-            {output && (
+            {!isLoading && output && (
               <Button variant="outline" size="sm" onClick={copyToClipboard}>
                 <Copy className="h-4 w-4 mr-2" />
                 Copy
@@ -413,18 +428,7 @@ ${userPrompt}
 
           <Card className="p-4 rounded-md min-h-[300px] relative">
             {isLoading && (
-              <div className="absolute inset-0 flex items-center justify-center g-opacity-80">
-                <div className="text-center">
-                  <Loader2 className="h-8 w-8 animate-spin mx-auto mb-2" />
-                  <p className="text-sm">
-                    {fetchingDefinitions
-                      ? "Fetching database schema..."
-                      : generationMode === "prompt"
-                      ? "Generating AI prompt..."
-                      : "Generating seed query..."}
-                  </p>
-                </div>
-              </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-muted/60"></div>
             )}
 
             <pre className="text-sm overflow-x-auto whitespace-pre-wrap">

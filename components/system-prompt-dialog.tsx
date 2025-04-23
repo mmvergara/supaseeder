@@ -74,7 +74,6 @@ DROP FUNCTION public.create_test_user(uuid, text, text);
 - Generate varied but realistic data for different column types
 - Ensure referential integrity across related tables
 - Handle NULL values appropriately based on column constraints
-- just output a raw VALID Supabase PostgreSQL query, no need to explain the code, no need for the \`\`\`sql block,
 - if you want to explain something, just add a comment in the SQL code
 `;
 
@@ -92,6 +91,7 @@ export function SystemPromptCustomizer() {
 
   const handleSavePrompt = () => {
     localStorage.setItem("customSystemPrompt", systemPrompt);
+
     setIsDialogOpen(false);
   };
 
