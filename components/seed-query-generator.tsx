@@ -50,8 +50,6 @@ const MODELS = [
 ];
 
 export function SeedQueryGenerator() {
-  const { theme } = useTheme();
-  console.log(theme);
   const [supabaseUrl, setSupabaseUrl] = useState("");
   const [supabaseAnonKey, setSupabaseAnonKey] = useState("");
   const [openaiKey, setOpenaiKey] = useState("");
