@@ -8,14 +8,13 @@ import PostHogPageView from "./PostHogPageView";
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const postHogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-    const postHogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST;
-    if (!postHogKey || !postHogHost) {
+    if (!postHogKey) {
       console.error("PostHog key or host is not defined, skipping posthog.");
       return;
     }
 
     posthog.init(postHogKey, {
-      api_host: postHogHost,
+      api_host: "/ingest",
       capture_pageview: false,
     });
   }, []);
