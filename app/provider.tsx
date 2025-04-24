@@ -14,7 +14,7 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     }
 
     posthog.init(postHogKey, {
-      api_host: postHogHost,
+      api_host: "/ingest",
       capture_pageview: false, // Disable automatic pageview capture, as we capture manually
     });
   }, []);
