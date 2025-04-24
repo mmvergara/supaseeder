@@ -33,7 +33,6 @@ import {
 } from "./system-prompt-dialog";
 import { ModeToggle } from "./mode-toggle";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 
 type LocalStorageData = {
   supabaseUrl: string;
