@@ -7,14 +7,14 @@ import { useEffect } from "react";
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const postHogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-    const postHogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST;
-    if (!postHogKey || !postHogHost) {
+    if (!postHogKey) {
       console.error("PostHog key or host is not defined, skipping posthog.");
       return;
     }
 
     posthog.init(postHogKey, {
-      api_host: "/ingest",
+      api_host: "https://supaseeder.vercel.app/ingest",
+      ui_host: "https://us.posthog.com",
       capture_pageview: false, // Disable automatic pageview capture, as we capture manually
     });
   }, []);
