@@ -1,6 +1,12 @@
-# 🪴 SupaSeeder
+<h1 align="center">🪴 - SupaSeeder - 🪴</h1>
 
-Generate realistic **seed queries** for your **Supabase** database using **AI**. This tool analyzes your DB schema and generates seed data with SQL or prompts for GPT-based tools like ChatGPT.
+<p align="center">
+Using AI to Generate Seed Data for Supabase
+</p>
+
+Every developer knows the importance of having good seed data for fast testing and development. Manually crafting SQL queries to populate your database with realistic data can be tedious and error-prone, especially when dealing with complex relationships between tables.
+
+SupaSeeder connects to your Supabase instance, extracts the database schema, then you can either generate SQL insert statements or optimized prompts to use with any AI model to generate the seed data you need.
 
 ## ⚙️ How It Works
 
@@ -12,8 +18,8 @@ Generate realistic **seed queries** for your **Supabase** database using **AI**.
 
 3. **Pick mode**
 
-   - **Prompt** – generates a ChatGPT-style prompt using your schema
-   - **Direct** – uses OpenAI API to generate SQL seed queries instantly
+- **Prompt Mode**: Get optimized prompts to use with any AI (ChatGPT, Claude, etc.)
+- **Direct Mode**: Get complete SQL queries generated using OpenAI
 
 4. **Get SQL output**  
    Copy & paste to your SQL editor or Supabase SQL Runner.
@@ -25,7 +31,7 @@ Generate realistic **seed queries** for your **Supabase** database using **AI**.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/username/supaseeder.git
+   git clone https://github.com/mmvergara/supaseeder.git
    cd supaseeder
    ```
 
