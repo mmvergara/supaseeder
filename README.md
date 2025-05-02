@@ -8,6 +8,8 @@ Every developer knows the importance of having good seed data for fast testing a
 
 SupaSeeder connects to your Supabase instance, extracts the database schema, then you can either generate SQL insert statements or optimized prompts to use with any AI model to generate the seed data you need.
 
+### Try it out online at [supaseeder.vercel.app](https://supaseeder.vercel.app) 🔥
+
 ## ⚙️ How It Works
 
 1. **Provide Supabase URL & Anon Key**  
